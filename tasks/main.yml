@@ -19,7 +19,7 @@
     
 - name: enable extra/*conf
   blockinfile:
-    path: /etc/httpd/httpd.conf
+    path: /etc/httpd/conf/httpd.conf
     insertafter: "IncludeOptional conf.d/*.conf"
     block: |
       IncludeOptional extra/*.conf;
