@@ -8,7 +8,22 @@
     snap install --classic certbot
     ln -sf /snap/bin/certbot /usr/bin/certbot
   when: apache_certbot  
-  
+
+- name: create apache extra Directory
+  file:
+    path: "{{item}}"
+    state: directory
+    recurse: true
+  loop:
+    - /etc/httpd/extra
+    
+- name: enable extra/*conf
+  blockinfile:
+    path: /etc/httpd/httpd.conf
+    insertafter: "IncludeOptional conf.d/*.conf"
+    block: |
+      IncludeOptional extra/*.conf;
+      
 # check service state
 - name: Check Apache Service
   shell: systemctl status apache | grep Active*
