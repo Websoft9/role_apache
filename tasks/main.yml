@@ -22,7 +22,7 @@
     path: /etc/httpd/conf/httpd.conf
     insertafter: "IncludeOptional conf.d/*.conf"
     block: |
-      IncludeOptional extra/*.conf;
+      IncludeOptional extra/*.conf
       
 # check service state
 - name: Check Apache Service
