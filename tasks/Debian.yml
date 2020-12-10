@@ -83,7 +83,10 @@
     dest: /etc/httpd/conf/httpd.conf
     regexp: "#ServerName localhost:80"
     line: "ServerName localhost:80"
-    
+
+- name: rename user www-root to apache
+  shell: sed  -i '/apache/d;s/www-data.*/&\n&/;s/www-data/apache/' /etc/passwd
+
 - name: Start Apache
   service:
     name: apache2
