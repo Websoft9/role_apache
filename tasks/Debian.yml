@@ -85,7 +85,7 @@
     line: "ServerName localhost:80"
 
 - name: rename user www-data to apache
-  shell: sed  -i '/apache/d;s/www-data.*/&\n&/;s/www-data/apache/' /etc/passwd
+  shell: sed  -i '/apache/d;s/www-data.*/&\n&/;s/www-data/apache/' /etc/passwd /etc/group
 
 - name: Start Apache
   service:
