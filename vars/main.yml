@@ -1,1 +1,8 @@
 apache_ius_url: https://repo.ius.io/ius-release-el7.rpm
+
+apache_modules_redhat:
+  - httpd24u-mod_ssl
+
+
+apache_modules_debian:
+  - libapache2-mod-xsendfile

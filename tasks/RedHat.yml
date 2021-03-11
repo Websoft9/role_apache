@@ -28,14 +28,14 @@
 
   - name: Install httpd24u
     yum:
-      name: [httpd24u,httpd24u-mod_ssl]
+      name: httpd24u-devel 
+      update_cache: yes
       skip_broken: yes
-  when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7') or ansible_distribution == 'Amazon'
 
-- name: Install Apache
-  yum:
-    name: [httpd,mod_ssl]
-  when: ansible_distribution_major_version == '8'
+  - name: Install httpd modules 
+    yum: 
+      name: "{{ item }}"
+    loop: "{{ apache_modules_redhat }}"
 
 - name: Create default Directory
   file:

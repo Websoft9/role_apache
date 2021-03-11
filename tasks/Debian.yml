@@ -19,7 +19,12 @@
     
 - name: Install Apache and 3th modules
   apt:
-    name: [apache2,libapache2-mod-xsendfile]
+    name: apache2-dev
+
+- name: Install Apache2 modules
+  apt: 
+    name: "{{ item }}"
+  loop: "{{ apache_modules_debian }}"
     
 - name: Enable Apache modules
   shell: |
