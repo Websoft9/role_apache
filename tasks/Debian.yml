@@ -17,9 +17,9 @@
 - name: delete installed apache files
   shell: rm -rf /etc/apache2
     
-- name: Install Apache and 3th modules
+- name: Install apache2 and apache2-dev
   apt:
-    name: apache2-dev
+    name: [apache2,apache2-dev]
 
 - name: Install Apache2 modules
   apt: 

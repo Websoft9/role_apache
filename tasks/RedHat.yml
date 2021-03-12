@@ -26,7 +26,7 @@
       name: "{{apache_ius_url}}"
       state: present
 
-  - name: Install httpd24u
+  - name: Install httpd24u-devel(include httpd24u)
     yum:
       name: httpd24u-devel 
       update_cache: yes
