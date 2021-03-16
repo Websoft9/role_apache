@@ -14,8 +14,6 @@
   when: apache_certbot
     
 #2 install and configure Apache
-- name: delete installed apache files
-  shell: rm -rf /etc/apache2
     
 - name: Install apache2 and apache2-dev
   apt:
