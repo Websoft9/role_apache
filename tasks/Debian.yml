@@ -30,6 +30,7 @@
   shell: |
     a2enmod rewrite
     a2enmod ssl
+  failed_when: false
 
 - name: Create default Directory
   file:
