@@ -75,10 +75,13 @@
 
 - name: Link Apache service
   file:
-    src: /usr/lib/systemd/system/httpd.service
-    dest: /usr/lib/systemd/system/apache.service
+    src: '{{item.src}}'
+    dest: '{{item.dest}}'
     state: link
-
+  with_items:
+    - {src: /usr/lib/systemd/system/httpd.service,dest:  /usr/lib/systemd/system/apache.service} 
+    - {src: /usr/lib/systemd/system/httpd.service,dest:  /usr/lib/systemd/system/apache.2service}
+    
 - name: set auto access index page
   lineinfile:
     dest: /etc/httpd/conf/httpd.conf
