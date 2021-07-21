@@ -25,7 +25,7 @@
   server_name {{apache_appname}}.yourdomain.com
   ProxyPass / http://127.0.0.1:{{ apache_reverse_proxy_port }}/
   error_log "logs/{{apache_appname}}-error_log"
-  access_log  "logs/{{apache_appname}}-access_log" common
+  CustomLog  "logs/{{apache_appname}}-access_log" common
 </VirtualHost>
 {% endif %}
 
