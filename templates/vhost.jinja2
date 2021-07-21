@@ -20,6 +20,16 @@
 #----- HTTPS  end --------------
 {% endif %}
 
+{% if apache_vhost_mode == 'reverse' %}
+<VirtualHost *:{{ apache_listen_port }}>
+  server_name {{apache_appname}}.yourdomain.com
+  ProxyPass / http://127.0.0.1:{{ apache_reverse_proxy_port }}/
+  error_log "logs/{{apache_appname}}-error_log"
+  access_log  "logs/{{apache_appname}}-access_log" common
+</VirtualHost>
+{% endif %}
+
+
 {% if apache_vhost_mode == 'alias' %}
 Alias /app1 "/data/wwwroot/{{apache_appname}}"
 <Directory "/data/wwwroot/{{apache_appname}}>
