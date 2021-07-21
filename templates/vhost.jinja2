@@ -29,6 +29,11 @@
   ProxyPassReverse / http://127.0.0.1:{{ apache_reverse_proxy_port }}/
   ErrorLog "logs/{{apache_appname}}-error_log"
   CustomLog  "logs/{{apache_appname}}-access_log" common
+  
+  <Proxy />  
+     Order deny,allow  
+     Allow from all  
+  </Proxy>  
 </VirtualHost>
 {% endif %}
 
