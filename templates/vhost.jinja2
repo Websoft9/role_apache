@@ -21,7 +21,7 @@
 {% endif %}
 
 {% if apache_vhost_mode == 'reverse' %}
-<VirtualHost *:{{ apache_listen_port }}>
+<VirtualHost *:80>
   server_name {{apache_appname}}.yourdomain.com
   ProxyPass / http://127.0.0.1:{{ apache_reverse_proxy_port }}/
   ProxyPassReverse / http://127.0.0.1:{{ apache_reverse_proxy_port }}/
